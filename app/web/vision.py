@@ -10,4 +10,6 @@ class VisionTopics(Resource):
         pass
 
     def get(self):
+        types = ['Axes', 'Image', 'Marker', 'MarkerArray', 'PointCloud2', 'Pose', 'PoseArray', 'TF']
+        print ros.getRostopics()
         return ros.getRostopics()
