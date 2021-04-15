@@ -1,18 +1,26 @@
 from flask import Flask
+from flask_socketio import SocketIO
+
 from app.models.log import db
 
+app = Flask(__name__)
+app.config.from_object('app.secure')
+app.config.from_object('app.setting')
+socketio = SocketIO(app, cors_allowed_origins="*")
 
-def create_app():
-    app = Flask(__name__)
-    app.config.from_object('app.secure')
-    app.config.from_object('app.setting')
-    register_blueprint(app)
+from app.web import web
 
-    db.init_app(app)
-    db.create_all(app=app)
-    return app
+app.register_blueprint(web)
+
+db.init_app(app)
+db.create_all(app=app)
 
 
-def register_blueprint(app):
-    from app.web import web
-    app.register_blueprint(web)
+@socketio.on('connect')
+def establish_sockio():
+    print 'socket connect'
+
+
+@socketio.on('disconnect')
+def test_disconnect():
+    print('Client disconnected')

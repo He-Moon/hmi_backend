@@ -3,9 +3,7 @@ from flask_restful import Api, Resource
 from flask_cors import CORS
 
 web = Blueprint('web', __name__)
-from app.web import system_operation
-from app.web import vision
-from app.web import user
+from app.web import system_operation, vision, connect, log, user
 
 CORS(web)
 api = Api(web)
@@ -29,8 +27,21 @@ api.add_resource(system_operation.Start, '/api/cmd/start')
 api.add_resource(system_operation.Stop, '/api/cmd/stop')
 api.add_resource(system_operation.Pause, '/api/cmd/pause')
 api.add_resource(system_operation.Continue, '/api/cmd/restart')
+api.add_resource(system_operation.Reset, '/api/cmd/reset')
+api.add_resource(system_operation.Shutdown, '/api/cmd/shutdown')
+
+"""
+connect
+"""
+api.add_resource(connect.Connect, '/connect_status')
+
+"""
+log
+"""
+api.add_resource(log.Log, '/api/notify/system_log')
 
 """
 vision
 """
+api.add_resource(vision.VisionTopicsList, '/vision/topics_list')
 api.add_resource(vision.VisionTopics, '/vision/topics')

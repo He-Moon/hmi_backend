@@ -7,5 +7,5 @@ class LogSchema(Schema):
     en_msg = fields.String(missing=None, default=None)  # 'Dropped SKU', 'Nonconform SKU', ...
     zh_msg = fields.String()
     en_tip = fields.String(missing=None, default=None)
-    zh_tip = fields.String()
+    zh_tip = fields.String(missing=None, default=None)
     timeout = fields.Int(missing=None, default=None)

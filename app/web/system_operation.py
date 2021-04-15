@@ -1,5 +1,9 @@
+# -*- coding: utf-8 -*-
 from flask_restful import Resource
+from app.common.response import format_res
 
+
+# todo 读取对应路径的脚本。
 
 class Start(Resource):
 
@@ -7,8 +11,7 @@ class Start(Resource):
         pass
 
     def get(self):
-        print self
-        return 'start'
+        return format_res()
 
 
 class Stop(Resource):
@@ -17,8 +20,7 @@ class Stop(Resource):
         pass
 
     def get(self):
-        print self
-        return 'stop'
+        return format_res()
 
 
 class Continue(Resource):
@@ -27,8 +29,7 @@ class Continue(Resource):
         pass
 
     def get(self):
-        print self
-        return 'continue'
+        return format_res()
 
 
 class Pause(Resource):
@@ -37,5 +38,22 @@ class Pause(Resource):
         pass
 
     def get(self):
-        print self
-        return 'pause'
+        return format_res()
+
+
+class Reset(Resource):
+
+    def __init__(self):
+        pass
+
+    def get(self):
+        return format_res()
+
+
+class Shutdown(Resource):
+
+    def __init__(self):
+        pass
+
+    def get(self):
+        return format_res()
