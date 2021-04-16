@@ -1,0 +1,78 @@
+{
+    "rebinLive": {
+        "shelf": true, 
+        "gridOpt": {
+            "syncShelfIndicator": false, 
+            "updateRebinByInput": true, 
+            "barcodesDes": true
+        }, 
+        "batchInfo": {
+            "batchNum": true, 
+            "batchId": true, 
+            "printBatch": true, 
+            "_batchInfo": true
+        }, 
+        "shelfOpt": {
+            "finish": true, 
+            "moveToHistory": true, 
+            "placeAll": true, 
+            "manual": true, 
+            "back": true, 
+            "undo": true, 
+            "scanShelf": true, 
+            "_shelfOpt": true, 
+            "viewHistory": true, 
+            "untieShelf": false
+        }
+    }, 
+    "appType": "rebin", 
+    "cupList": [
+        {
+            "displayName": "small", 
+            "type": "PIAB_BX20"
+        }, 
+        {
+            "displayName": "medium", 
+            "type": "PIAB_BX35"
+        }, 
+        {
+            "displayName": "large", 
+            "type": "PIAB_B52"
+        }, 
+        {
+            "displayName": "coval", 
+            "type": "COVAL_FPC60"
+        }
+    ], 
+    "header": {
+        "rebinLive": true, 
+        "dropLog": false, 
+        "palletizingPlan": false, 
+        "orderList": false, 
+        "systemMonitor": false, 
+        "supportCenter": false, 
+        "systemLog": true, 
+        "systemWebcam": true
+    }, 
+    "supportCenter": {}, 
+    "systemLog": {
+        "download": false
+    }, 
+    "systemWebcam": {
+        "webcamNumer": 1, 
+        "resetCamera": true
+    }, 
+    "sidebar": {
+        "stop": true, 
+        "start": true, 
+        "continue": true, 
+        "shutdown": true, 
+        "initialize": true, 
+        "release": true
+    }, 
+    "homePage": "rebin", 
+    "fn": {
+        "selectCup": false, 
+        "systemState": false
+    }
+}

@@ -3,7 +3,7 @@ from flask_restful import Api, Resource
 from flask_cors import CORS
 
 web = Blueprint('web', __name__)
-from app.web import system_operation, vision, connect, log, user
+from app.web import system_operation, vision, connect, log, user, config_file
 
 CORS(web)
 api = Api(web)
@@ -45,3 +45,8 @@ vision
 """
 api.add_resource(vision.VisionTopicsList, '/vision/topics_list')
 api.add_resource(vision.VisionTopics, '/vision/topics')
+
+"""
+config_file
+"""
+api.add_resource(config_file.ProjectConfigFile, '/config_file')

@@ -47,7 +47,7 @@ Thumbs.db
 *.wmv
 
 #
-#*.pyc
+*.pyc
 
 # config
 #apps/configs/robotdriver_config.yml

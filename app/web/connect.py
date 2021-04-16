@@ -4,6 +4,7 @@ from app.common.response import format_res
 from app.common.socket import send_connect_status_by_websocket
 
 
+
 class Connect(Resource):
     def __init__(self):
         pass

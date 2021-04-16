@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import subprocess
 from flask_restful import Resource
 from app.common.response import format_res
 
@@ -11,7 +12,12 @@ class Start(Resource):
         pass
 
     def get(self):
-        return format_res()
+        try:
+            subprocess.check_call(['python /home/xyz/start.py'])
+            return format_res()
+        except Exception as e:
+            print type(e)
+            return format_res(code=-1)
 
 
 class Stop(Resource):
@@ -56,4 +62,8 @@ class Shutdown(Resource):
         pass
 
     def get(self):
-        return format_res()
+        try:
+            subprocess.check_call(['systemctl poweroff -i'])
+        except Exception as e:
+            print e
+            return format_res(code=-1)

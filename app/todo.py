@@ -9,7 +9,12 @@ todo
 4. 连接状态的接口 post / websocket [ok]
 5. system log 的post / websocket [ok]
 6. 添加数据库（存储系统日志）
-7. 添加config file
+7. 添加config file 接口
+7(fix). 生成/修改config 文件
 8. 所有post / put 接口数据校验
 9. log 装饰类 & 捕获异常
+
+ToooooooooooooooooDoooooooooooooo
+10. 添加/修改开始，停止，暂停，复位等脚本地址。
+11. 测试关机命令
 """
