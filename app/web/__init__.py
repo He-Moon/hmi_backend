@@ -38,8 +38,8 @@ api.add_resource(connect.Connect, '/connect_status')
 """
 log
 """
-api.add_resource(log.Log, '/api/notify/system_log')
-
+api.add_resource(log.Logs, '/api/notify/system_log')
+api.add_resource(log.QueryLog, '/api/query/log')
 """
 vision
 """

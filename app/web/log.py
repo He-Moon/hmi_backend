@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 from flask import request
 from flask_restful import Resource
-from app.validators.log import LogSchema
+from app.validators.log import LogSchema, QueryLogSchema
 from app.common.response import format_res
 from app.common.socket import send_log_by_websocket
+from app.models.log import Log
+from app import db
+import time
+import json
 
 
-class Log(Resource):
+class Logs(Resource):
 
     def __init__(self):
         pass
@@ -20,14 +24,40 @@ class Log(Resource):
             return res
 
         # 存储到数据库
-        # timestamp = time.time() * 1000
-        # data['timestamp'] = timestamp
+        timestamp = int(time.time())
+        data['timestamp'] = timestamp
+        self.save_to_db(data)
         ws_res = send_log_by_websocket(data)
         if ws_res:
             return format_res()
         else:
             return format_res(code=-1)
 
-    def get(self):
-        print self
-        return 'start'
+    @staticmethod
+    def save_to_db(data):
+        log = Log(
+            msg_type=data['msg_type'],
+            code=data['code'],
+            zh_msg=data['zh_msg'],
+            en_msg=data['en_msg'],
+            zh_tip=data['zh_tip'],
+            en_tip=data['en_tip'],
+            timeout=data['timeout'],
+            timestamp=data['timestamp']
+        )
+        db.session.add(log)
+        db.session.commit()
+
+
+class QueryLog(Resource):
+    def __init__(self):
+        pass
+
+    def post(self):
+        query_log_schema = QueryLogSchema()
+        data, error = query_log_schema.load(request.get_json())
+        if error:
+            msg = 'data type error'
+            res = format_res(code=-1, msg=msg)
+            return res
+        return format_res()

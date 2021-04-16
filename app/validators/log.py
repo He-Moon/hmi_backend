@@ -9,3 +9,7 @@ class LogSchema(Schema):
     en_tip = fields.String(missing=None, default=None)
     zh_tip = fields.String(missing=None, default=None)
     timeout = fields.Int(missing=None, default=None)
+
+
+class QueryLogSchema(Schema):
+    date = fields.String()

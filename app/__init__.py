@@ -1,7 +1,9 @@
 from flask import Flask
 from flask_socketio import SocketIO
 
-from app.models.log import db
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
 
 app = Flask(__name__)
 app.config.from_object('app.secure')

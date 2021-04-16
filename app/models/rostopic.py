@@ -1,5 +1,5 @@
 from sqlalchemy import Column, String, Integer, Boolean
-from ..db import db
+from ..db_1 import db
 
 
 class VisionRostopic(db.Model):
