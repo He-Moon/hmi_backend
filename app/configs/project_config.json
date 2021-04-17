@@ -1,51 +1,8 @@
 {
-    "rebinLive": {
-        "shelf": true, 
-        "gridOpt": {
-            "syncShelfIndicator": false, 
-            "updateRebinByInput": true, 
-            "barcodesDes": true
-        }, 
-        "batchInfo": {
-            "batchNum": true, 
-            "batchId": true, 
-            "printBatch": true, 
-            "_batchInfo": true
-        }, 
-        "shelfOpt": {
-            "finish": true, 
-            "moveToHistory": true, 
-            "placeAll": true, 
-            "manual": true, 
-            "back": true, 
-            "undo": true, 
-            "scanShelf": true, 
-            "_shelfOpt": true, 
-            "viewHistory": true, 
-            "untieShelf": false
-        }
-    }, 
-    "appType": "rebin", 
-    "cupList": [
-        {
-            "displayName": "small", 
-            "type": "PIAB_BX20"
-        }, 
-        {
-            "displayName": "medium", 
-            "type": "PIAB_BX35"
-        }, 
-        {
-            "displayName": "large", 
-            "type": "PIAB_B52"
-        }, 
-        {
-            "displayName": "coval", 
-            "type": "COVAL_FPC60"
-        }
-    ], 
+    "appType": "industrial", 
+    "cupList": [], 
     "header": {
-        "rebinLive": true, 
+        "rebinLive": false, 
         "dropLog": false, 
         "palletizingPlan": false, 
         "orderList": false, 
@@ -68,9 +25,9 @@
         "continue": true, 
         "shutdown": true, 
         "initialize": true, 
-        "release": true
+        "release": false
     }, 
-    "homePage": "rebin", 
+    "homePage": "system-webcam", 
     "fn": {
         "selectCup": false, 
         "systemState": false

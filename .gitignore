@@ -50,7 +50,8 @@ Thumbs.db
 *.pyc
 
 # config
-#apps/configs/robotdriver_config.yml
+#app/configs/project_config.json
+#app/configs/rostopic_config.json
 
 venv/
 .vscode/

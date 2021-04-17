@@ -1,0 +1,69 @@
+{
+    "topic_list": [
+        {
+            "topic": "/xyz_vision_sensor/camera_pointcloud", 
+            "type": "sensor_msgs/PointCloud2", 
+            "subscribed": false
+        }, 
+        {
+            "topic": "/xyz_calibration_marker_array", 
+            "type": "visualization_msgs/MarkerArray", 
+            "subscribed": false
+        },
+        {
+            "topic": "/client_count",
+            "type": "std_msgs/Int32",
+            "subscribed": false
+        },
+        {
+            "topic": "/xyz_tote_pose_array",
+            "type": "geometry_msgs/PoseArray",
+            "subscribed": false
+        },
+        {
+            "topic": "/tf2_web_republisher/result",
+            "type": "tf2_web_republisher/TFSubscriptionActionResult",
+            "subscribed": false
+        },
+        {
+            "topic": "/rosout",
+            "type": "rosgraph_msgs/Log",
+            "subscribed": false
+        },
+        {
+            "topic": "/tf",
+            "type": "tf2_msgs/TFMessage",
+            "subscribed": false
+        },
+        {
+            "topic": "/connected_clients",
+            "type": "rosbridge_msgs/ConnectedClients",
+            "subscribed": false
+        },
+        {
+            "topic": "/tf2_web_republisher/feedback",
+            "type": "tf2_web_republisher/TFSubscriptionActionFeedback",
+            "subscribed": false
+        },
+        {
+            "topic": "/rosout_agg",
+            "type": "rosgraph_msgs/Log",
+            "subscribed": false
+        },
+        {
+            "topic": "/xyz_calibration_board_array",
+            "type": "geometry_msgs/PoseArray",
+            "subscribed": false
+        },
+        {
+            "topic": "/tf2_web_republisher/status",
+            "type": "actionlib_msgs/GoalStatusArray",
+            "subscribed": false
+        },
+        {
+            "topic": "/xyz_vision_sensor/status",
+            "type": "std_msgs/Bool",
+            "subscribed": false
+        }
+    ]
+}

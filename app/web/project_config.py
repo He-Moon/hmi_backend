@@ -18,6 +18,8 @@ class ProjectConfigFile(Resource):
                 project_config_file = json.load(f)
         else:
             project_config_file = {}
+            with open(self.project_config_path, 'w') as f:
+                json.dump(project_config_file, f, indent=4)
         return format_res(data=project_config_file)
 
     def post(self):

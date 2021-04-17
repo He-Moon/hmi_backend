@@ -3,11 +3,11 @@ from flask import request
 from flask_restful import Resource
 from app.validators.log import LogSchema, QueryLogSchema
 from app.common.response import format_res
+from app.common.util import format_unicode_data, trans_timestamp, today_timestamp
 from app.common.socket import send_log_by_websocket
 from app.models.log import Log
 from app import db
 import time
-import json
 
 
 class Logs(Resource):
@@ -17,14 +17,13 @@ class Logs(Resource):
 
     def post(self):
         log_schema = LogSchema()
-        data, error = log_schema.load(request.get_json())
+        data, error = log_schema.loads(request.data)
         if error:
             msg = 'data type error'
             res = format_res(code=-1, msg=msg)
             return res
 
-        # 存储到数据库
-        timestamp = int(time.time())
+        timestamp = today_timestamp()
         data['timestamp'] = timestamp
         self.save_to_db(data)
         ws_res = send_log_by_websocket(data)
@@ -35,6 +34,7 @@ class Logs(Resource):
 
     @staticmethod
     def save_to_db(data):
+        # data = format_unicode_data(data)
         log = Log(
             msg_type=data['msg_type'],
             code=data['code'],
@@ -56,8 +56,22 @@ class QueryLog(Resource):
     def post(self):
         query_log_schema = QueryLogSchema()
         data, error = query_log_schema.load(request.get_json())
+        req_data = self.get_data_from_db(data)
         if error:
             msg = 'data type error'
             res = format_res(code=-1, msg=msg)
             return res
-        return format_res()
+        return format_res(data=req_data)
+
+    @staticmethod
+    def get_data_from_db(data):
+        error_logs = Log.query.filter_by(timestamp=trans_timestamp(data['date'])).filter_by(msg_type='error')
+        error_logs = [log.to_dict() for log in error_logs]
+
+        warning_logs = Log.query.filter_by(timestamp=trans_timestamp(data['date'])).filter_by(msg_type='warning')
+        warning_logs = [log.to_dict() for log in warning_logs]
+
+        info_logs = Log.query.filter_by(timestamp=trans_timestamp(data['date'])).filter_by(msg_type='info')
+        info_logs = [log.to_dict() for log in info_logs]
+
+        return {'errors': error_logs, 'warns': warning_logs, 'infos': info_logs}
